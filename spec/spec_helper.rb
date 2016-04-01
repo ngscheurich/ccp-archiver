@@ -31,7 +31,7 @@ RSpec.configure do |config|
   config.order = :random
 
   config.before(:each) do
-    stub_request(:get, "http://theadvocate.com/api/stories/nitf")
+    stub_request(:get, /theadvocate.com/)
       .with(headers: { "Accept" => "*/*", "User-Agent" => "Ruby" })
       .to_return(status: 200, body: dti_response, headers: {})
   end
