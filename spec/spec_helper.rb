@@ -31,9 +31,9 @@ RSpec.configure do |config|
   config.order = :random
 
   config.before(:each) do
-    stub_request(:get, /theadvocate.com/)
-      .with(headers: { "Accept" => "*/*", "User-Agent" => "Ruby" })
-      .to_return(status: 200, body: dti_response, headers: {})
+    stub_request(:get, /theadvocate.com/).
+      with(headers: { "Accept" => "*/*", "User-Agent" => "Ruby" }).
+      to_return(status: 200, body: dti_response, headers: {})
   end
 end
 
