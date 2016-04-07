@@ -1,5 +1,9 @@
 # coding: utf-8
 class ApiResponse < ActiveRecord::Base
+  def self.last_cms_id
+    ApiResponse.last.cms_ids.last
+  end
+
   def time_elapsed
     (request_completed - request_initiated) * 1000
   end
