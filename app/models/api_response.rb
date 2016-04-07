@@ -13,6 +13,10 @@ class ApiResponse < ActiveRecord::Base
   end
 
   def cms_ids
+    JSON.parse(response_data)["cms_ids"]
+  end
+
+  def cms_id_range
     if cms_id_start == cms_id_end
       cms_id_start
     else
