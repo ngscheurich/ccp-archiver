@@ -1,0 +1,14 @@
+%h1.page-title Stories
+
+%table.stories
+  %thead
+    %tr
+      %th Created
+      %th
+        %abbr{title: "Content Management System"} CMS
+        ID
+  %tbody
+    - @stories.each do |story|
+      %tr.story
+        %td.story__created-at= story.created_at
+        %td.story__cms-id= story.cms_id

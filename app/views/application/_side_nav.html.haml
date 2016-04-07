@@ -1,0 +1,12 @@
+%nav.cd-side-nav
+  %ul
+    %li.cd-label Content
+    %li{class: side_nav_class("dashboard", false)}
+      = link_to "Dashboard", dashboard_path
+    %li{class: side_nav_class("stories")}
+      = link_to "Stories", stories_path
+    %li{class: side_nav_class("api_responses")}
+      = link_to "Log", api_responses_path
+  %ul
+    %li.cd-label Actions
+    %li.action-btn= link_to "+ Some Action", "#"
