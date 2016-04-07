@@ -9,6 +9,10 @@ class ApiResponse < ActiveRecord::Base
   end
 
   def cms_ids
-    "#{cms_id_start}–#{cms_id_end}"
+    if cms_id_start == cms_id_end
+      cms_id_start
+    else
+      "#{cms_id_start}–#{cms_id_end}"
+    end
   end
 end
