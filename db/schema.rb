@@ -11,22 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406224440) do
+ActiveRecord::Schema.define(version: 20160407194200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "api_responses", force: :cascade do |t|
-    t.datetime "request_initiated"
-    t.datetime "request_completed"
-    t.integer  "response_code"
-    t.float    "server_response_time"
-    t.integer  "cms_id_start"
-    t.integer  "cms_id_end"
-    t.integer  "stories_retrieved"
-    t.text     "response_data"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.float    "elapsed_time"
+    t.text     "data"
+    t.datetime "initiated_at"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -48,8 +43,28 @@ ActiveRecord::Schema.define(version: 20160406224440) do
   create_table "stories", force: :cascade do |t|
     t.integer  "cms_id"
     t.text     "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "headline"
+    t.string   "byline"
+    t.text     "body"
+    t.string   "subhead"
+    t.string   "pull_quote"
+    t.text     "html_content"
+    t.string   "video_id"
+    t.string   "redirect_url"
+    t.text     "digest"
+    t.text     "infobox"
+    t.string   "time_updated"
+    t.string   "location"
+    t.string   "video_provider"
+    t.string   "promo_text"
+    t.datetime "publish_date"
+    t.boolean  "suppress_comments"
+    t.boolean  "suppress_ads"
+    t.string   "keywords"
+    t.text     "html_content_two"
+    t.boolean  "state"
   end
 
   create_table "users", force: :cascade do |t|
