@@ -5,12 +5,8 @@ FactoryGirl.define do
     response_code 1
     server_response_time 1.5
     cms_id_start 1
-    cms_id_end 1
-    stories_retrieved 1
-    response_data "MyText"
-  end
-  factory :story do
-    cms_id 1
-    data '{"foo":"bar"}'
+    cms_id_end 4
+    stories_retrieved 4
+    response_data '{"foo":"bar"}'
   end
 end
