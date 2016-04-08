@@ -7,8 +7,8 @@ feature "User views API responses" do
     visit api_responses_path
 
     expect(page).to have_css(
-      ".api-response__request-initiated",
-      api_response.request_initiated
+      ".api-response__initiated-at",
+      api_response.initiated_at
     )
   end
 
@@ -18,8 +18,8 @@ feature "User views API responses" do
     visit api_response_path(api_response.id)
 
     expect(page).to have_css(
-      ".api-response__request-initiated",
-      api_response.request_initiated
+      ".api-response__initiated-at",
+      api_response.initiated_at
     )
   end
 end

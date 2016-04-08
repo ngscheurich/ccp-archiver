@@ -5,25 +5,37 @@ module ApiRequest
     dti = Dti.new(start_id, num_stories)
 
     time_start = Time.now
-    data = dti.stories
+    response = dti.stories
     time_finish = Time.now
-    initiated_at = time_start
-    elapsed_time = (time_finish - time_start) * 1000
 
-    create_api_response(initiated_at, elapsed_time, data)
+    create_api_response(
+      initiated_at: time_start,
+      elapsed_time: (time_finish - time_start) * 1000,
+      code: response.code,
+      message: response.message,
+      headers: response.headers.to_json,
+      body: response.to_json
+    )
   end
 
-  private_class_method def self.create_api_response(initiated_at, elapsed_time, data)
+  private_class_method def self.create_api_response(args)
     api_response = ApiResponse.new(
-      initiated_at: initiated_at,
-      elapsed_time: elapsed_time,
-      data: data
+      initiated_at: args[:initiated_at],
+      elapsed_time: args[:elapsed_time],
+      code: args[:code],
+      message: args[:message],
+      headers: args[:headers],
+      body: args[:body]
     )
 
     if api_response.save
-      Rails.logger.info("Saved ApiResponse: #{api_response.id}")
+      Rails.logger.info("Saved ApiResponse: #{log_attrs(api_response)}")
     else
-      Rails.logger.error("Couldn't save ApiResponse: #{api_response.attributes.inspect}")
+      Rails.logger.error("Couldn't save ApiResponse: #{log_attrs(api_response)}")
     end
+  end
+
+  private_class_method def self.log_attrs(api_response)
+    api_response.attributes.slice("id", "code", "message", "initiated_at", "elapsed_time")
   end
 end
