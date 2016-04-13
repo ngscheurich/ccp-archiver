@@ -1,7 +1,8 @@
 # coding: utf-8
 class ApiResponse < ActiveRecord::Base
   def self.last_cms_id
-    ApiResponse.last.cms_ids.last
+    last_api_response = ApiResponse.last || NoApiResponse.new
+    last_api_response.cms_ids.last
   end
 
   def status
@@ -12,7 +13,7 @@ class ApiResponse < ActiveRecord::Base
   end
 
   def cms_ids
-    extract("cms_ids", [])
+    extract("cms_ids", [1])
   end
 
   def stories_retrieved

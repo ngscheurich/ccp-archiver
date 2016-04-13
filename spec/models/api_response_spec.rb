@@ -9,6 +9,10 @@ describe ApiResponse do
 
       expect(ApiResponse.last_cms_id).to eq(3)
     end
+
+    it "returns 1 if there are no ApiResponses" do
+      expect(ApiResponse.last_cms_id).to eq(1)
+    end
   end
 
   describe "#cms_ids" do
