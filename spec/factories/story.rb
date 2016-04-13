@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :story do
     cms_id 1
-    data '{"foo":"bar"}'
+    headline "Test headline"
   end
 end
