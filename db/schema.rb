@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412145212) do
+ActiveRecord::Schema.define(version: 20160413165748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20160412145212) do
     t.integer  "code"
     t.string   "message"
   end
+
+  create_table "category_section_mappings", force: :cascade do |t|
+    t.string   "category"
+    t.string   "subcategory"
+    t.string   "section"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "category_section_mappings", ["category", "subcategory"], name: "index_category_section_mappings_on_category_and_subcategory", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -45,29 +55,21 @@ ActiveRecord::Schema.define(version: 20160412145212) do
 
   create_table "stories", force: :cascade do |t|
     t.integer  "cms_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "headline"
     t.string   "byline"
     t.text     "body"
     t.string   "subhead"
-    t.string   "pull_quote"
-    t.text     "html_content"
-    t.string   "video_id"
-    t.string   "redirect_url"
-    t.text     "digest"
     t.text     "infobox"
     t.string   "time_updated"
     t.string   "location"
-    t.string   "video_provider"
-    t.string   "promo_text"
     t.datetime "publish_date"
-    t.boolean  "suppress_comments"
-    t.boolean  "suppress_ads"
     t.string   "keywords"
-    t.text     "html_content_two"
     t.string   "url"
     t.integer  "state"
+    t.string   "category"
+    t.string   "subcategory"
   end
 
   create_table "users", force: :cascade do |t|
