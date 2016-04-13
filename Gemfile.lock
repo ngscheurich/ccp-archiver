@@ -300,6 +300,7 @@ DEPENDENCIES
   launchy
   neat (~> 1.7.0)
   newrelic_rpm (>= 3.9.8)
+  nokogiri
   normalize-rails (~> 3.0.0)
   pg
   pry-byebug

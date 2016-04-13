@@ -11,23 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406224440) do
+ActiveRecord::Schema.define(version: 20160413165748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "api_responses", force: :cascade do |t|
-    t.datetime "request_initiated"
-    t.datetime "request_completed"
-    t.integer  "response_code"
-    t.float    "server_response_time"
-    t.integer  "cms_id_start"
-    t.integer  "cms_id_end"
-    t.integer  "stories_retrieved"
-    t.text     "response_data"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.float    "elapsed_time"
+    t.text     "body"
+    t.datetime "initiated_at"
+    t.text     "headers"
+    t.integer  "code"
+    t.string   "message"
   end
+
+  create_table "category_section_mappings", force: :cascade do |t|
+    t.string   "category"
+    t.string   "subcategory"
+    t.string   "section"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "category_section_mappings", ["category", "subcategory"], name: "index_category_section_mappings_on_category_and_subcategory", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -47,9 +55,21 @@ ActiveRecord::Schema.define(version: 20160406224440) do
 
   create_table "stories", force: :cascade do |t|
     t.integer  "cms_id"
-    t.text     "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "headline"
+    t.string   "byline"
+    t.text     "body"
+    t.string   "subhead"
+    t.text     "infobox"
+    t.string   "time_updated"
+    t.string   "location"
+    t.datetime "publish_date"
+    t.string   "keywords"
+    t.string   "url"
+    t.integer  "state"
+    t.string   "category"
+    t.string   "subcategory"
   end
 
   create_table "users", force: :cascade do |t|

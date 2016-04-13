@@ -3,8 +3,8 @@
 %table.api-responses
   %thead
     %tr
-      %th Initiated
-      %th Time Elapsed (ms)
+      %th Initiated at
+      %th Elapsed Time (ms)
       %th Server Status
       %th Server Response Time (ms)
       %th Stories Retrieved
@@ -13,11 +13,10 @@
   %tbody
     - @api_responses.each do |api_response|
       %tr.api-response
-        %td.api-response__request-initiated= api_response.request_initiated
-        %td.api-response__time-elapsed= api_response.time_elapsed
-        %td.api-response__server-status= api_response.server_status
-        %td.api-response__server-response-time
-          = api_response.server_response_time
+        %td.api-response__initiated-at= api_response.initiated_at
+        %td.api-response__elapsed-time= api_response.elapsed_time
+        %td.api-response__status= api_response.status
+        %td.api-response__server-response-time= api_response.server_response_time
         %td.api-response__stories-retrieved= api_response.stories_retrieved
-        %td.api-response__cms-ids= api_response.cms_ids
+        %td.api-response__cms-ids= api_response.cms_id_range
         %td= link_to "Show", api_response

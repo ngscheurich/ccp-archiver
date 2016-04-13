@@ -1,18 +1,33 @@
 # coding: utf-8
 class ApiResponse < ActiveRecord::Base
-  def time_elapsed
-    (request_completed - request_initiated) * 1000
+  def self.last_cms_id
+    last_api_response = ApiResponse.last || NoApiResponse.new
+    last_api_response.cms_ids.last
   end
 
-  def server_status
-    "#{response_code} #{HttpStatus.message(response_code)}"
+  def status
+    "#{code} #{message}"
+  end
+
+  def server_response_time
   end
 
   def cms_ids
-    if cms_id_start == cms_id_end
-      cms_id_start
-    else
-      "#{cms_id_start}–#{cms_id_end}"
-    end
+    extract("cms_ids", [1])
+  end
+
+  def stories_retrieved
+    cms_ids.length
+  end
+
+  def cms_id_range
+    head = extract("cms_id_start")
+    last = extract("cms_id_end")
+    head == last ? head : "#{head}–#{last}"
+  end
+
+  def extract(key, default = "")
+    hash = JSON.parse(body)
+    hash.key?(key) ? hash[key] : default
   end
 end
