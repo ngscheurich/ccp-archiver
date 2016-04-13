@@ -10,7 +10,7 @@ development: &default
 
 test:
   <<: *default
-  database: ccp-archiver_test
+  database: travis_ci_test
 
 production: &deploy
   encoding: utf8
