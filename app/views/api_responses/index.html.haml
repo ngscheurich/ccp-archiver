@@ -13,7 +13,7 @@
   %tbody
     - @api_responses.each do |api_response|
       %tr.api-response
-        %:td.api-response__initiated-at= api_response.initiated_at
+        %td.api-response__initiated-at= api_response.initiated_at
         %td.api-response__elapsed-time= api_response.elapsed_time
         %td.api-response__status= api_response.status
         %td.api-response__server-response-time= api_response.server_response_time
