@@ -28,25 +28,17 @@ module Storify
       @story.state = Story::States::PROCESSING
       @story.cms_id = @api_story["cms_id"]
       @story.url = @api_story["url"]
-      @story.redirect_url = @api_story["redirect_url"]
       @story.publish_date = @api_story["publish_date"]
       @story.time_updated = @api_story["time_updated"]
       @story.headline = @api_story["headline"]
       @story.subhead = @api_story["subhead"]
       @story.byline = @api_story["byline"]
-      @story.digest = @api_story["digest"]
       @story.body = @api_story["body"]
-      @story.html_content = @api_story["html_content"]
       @story.infobox = @api_story["infobox"]
       @story.location = @api_story["location"]
-      @story.video_provider = @api_story["video_provider"]
-      @story.video_id = @api_story["video_id"]
-      @story.promo_text = @api_story["promo_text"]
-      # @story.keywords = @api_story["keywords"]
-      # @story.html_content_two = @api_story["html_content_two"]
-      # @story.pull_quote = @api_story["pull_quote"]
-      # @story.suppress_comments = @api_story["suppress_comments"]
-      # @story.suppress_ads = @api_story["suppress_ads"]
+      @story.keywords = @api_story["keywords"]
+      @story.category = @api_story["category"]
+      @story.subcategory = @api_story["subcategory"]
     end
 
     def save
