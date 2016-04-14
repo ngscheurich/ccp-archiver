@@ -1,6 +1,7 @@
 # Ccp-archiver
 
-[![Build Status](https://travis-ci.org/ngscheurich/ccp-archiver.svg?branch=master)](https://travis-ci.org/ngscheurich/ccp-archiver)
+[![Build Status](https://circleci.com/gh/ngscheurich/ccp-archiver.svg?&style=shield)](https://circleci.com/gh/ngscheurich/ccp-archiver)
+[![Code Coverage](https://codecov.io/github/ngscheurich/ccp-archiver/coverage.svg?branch=master)](https://codecov.io/github/ngscheurich/ccp-archiver?branch=master)
 
 ## Getting Started
 
