@@ -44,6 +44,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.4.0"
+  gem "rspec_junit_formatter", "0.2.2"
 end
 
 group :test do
