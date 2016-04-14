@@ -1,7 +1,8 @@
-if ENV.fetch("COVERAGE", false)
-  require "simplecov"
-  SimpleCov.start "rails"
-end
+require "simplecov"
+SimpleCov.start
+
+require "codecov"
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 require "webmock/rspec"
 

@@ -67,6 +67,10 @@ GEM
       bcrypt
       email_validator (~> 1.4)
       rails (>= 3.1)
+    codecov (0.1.4)
+      json
+      simplecov
+      url
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -220,6 +224,9 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    rspec_junit_formatter (0.2.2)
+      builder (< 4)
+      rspec-core (>= 2, < 4, != 2.12.0)
     ruby_parser (3.8.1)
       sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
@@ -264,6 +271,7 @@ GEM
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
     uniform_notifier (1.9.0)
+    url (0.3.2)
     web-console (3.1.1)
       activemodel (>= 4.2)
       debug_inspector
@@ -286,6 +294,7 @@ DEPENDENCIES
   bundler-audit
   capybara-webkit
   clearance
+  codecov
   coffee-rails (~> 4.1.0)
   database_cleaner
   delayed_job_active_record
@@ -315,6 +324,7 @@ DEPENDENCIES
   refills
   rollbar (~> 2.8.3)
   rspec-rails (~> 3.4.0)
+  rspec_junit_formatter (= 0.2.2)
   sass-rails (~> 5.0)
   shoulda-matchers
   simple_form

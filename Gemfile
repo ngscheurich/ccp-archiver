@@ -49,6 +49,7 @@ end
 
 group :test do
   gem "capybara-webkit"
+  gem "codecov", require: false
   gem "database_cleaner"
   gem "formulaic"
   gem "launchy"
