@@ -39,6 +39,28 @@ module Storify
       @story.keywords = @api_story["keywords"]
       @story.category = @api_story["category"]
       @story.subcategory = @api_story["subcategory"]
+      story_photos unless @api_story["photos"].nil?
+    end
+
+    def story_photos
+      @api_story["photos"].each do |story_photo|
+        existing_photo = Photo.where(photo_id: story_photo["photo_id"]).first
+        photo = existing_photo || new_photo(story_photo)
+        @story.photos << photo
+      end
+    end
+
+    def new_photo(args)
+      photo = Photo.new
+      photo.photo_id = args["photo_id"]
+      photo.byline = args["byline"]
+      photo.credit = args["credit"]
+      photo.caption = args["caption"]
+      photo.source = args["source"]
+      photo.save!
+      return photo
+    rescue ActiveRecord::RecordInvalid => invalid
+      Rails.logger.error("Couldn't save Photo: #{invalid.record.errors}")
     end
 
     def save

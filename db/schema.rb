@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413165748) do
+ActiveRecord::Schema.define(version: 20160414221053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,24 @@ ActiveRecord::Schema.define(version: 20160413165748) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "photo_id"
+    t.string   "byline"
+    t.string   "credit"
+    t.text     "caption"
+    t.string   "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "photos_stories", id: false, force: :cascade do |t|
+    t.integer "photo_id"
+    t.integer "story_id"
+  end
+
+  add_index "photos_stories", ["photo_id"], name: "index_photos_stories_on_photo_id", using: :btree
+  add_index "photos_stories", ["story_id"], name: "index_photos_stories_on_story_id", using: :btree
 
   create_table "stories", force: :cascade do |t|
     t.integer  "cms_id"

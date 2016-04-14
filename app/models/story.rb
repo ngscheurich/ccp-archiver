@@ -1,4 +1,6 @@
 class Story < ActiveRecord::Base
+  has_and_belongs_to_many :photos
+  
   DEFAULT_SECTION = "baton_rouge/news".freeze
 
   module States
