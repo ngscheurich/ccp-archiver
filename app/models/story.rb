@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
   has_and_belongs_to_many :photos
-  
+  belongs_to :api_response
+
   DEFAULT_SECTION = "baton_rouge/news".freeze
 
   module States

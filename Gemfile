@@ -26,6 +26,7 @@ gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem "title"
 gem "uglifier"
+gem "will_paginate", "~> 3.0.5"
 
 group :development do
   gem "quiet_assets"

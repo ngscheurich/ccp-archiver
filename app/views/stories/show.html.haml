@@ -3,6 +3,6 @@
   %dd.story__created-at= @story.created_at
   %dt CMS ID
   %dd.story__cms-id= @story.cms_id
-  %dt Headline
-  %dd.story__headline= @story.headline.html_safe
-  
+
+%h1.story__headline= @story.headline.html_safe
+= @story.body.html_safe  

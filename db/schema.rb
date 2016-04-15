@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414221053) do
+ActiveRecord::Schema.define(version: 20160415163644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 20160414221053) do
 
   create_table "stories", force: :cascade do |t|
     t.integer  "cms_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "headline"
     t.string   "byline"
     t.text     "body"
@@ -88,7 +88,10 @@ ActiveRecord::Schema.define(version: 20160414221053) do
     t.integer  "state"
     t.string   "category"
     t.string   "subcategory"
+    t.integer  "api_response_id"
   end
+
+  add_index "stories", ["api_response_id"], name: "index_stories_on_api_response_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                     null: false

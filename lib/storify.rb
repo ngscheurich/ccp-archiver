@@ -1,14 +1,16 @@
 module Storify
   class Stories
+    attr_reader :api_response
     attr_reader :stories
 
     def initialize(api_response)
+      @api_response = api_response
       @stories = JSON.parse(api_response.body)["stories"]
       process_stories
     end
 
     def process_stories
-      @stories.each { |s| ProcessedStory.new(s) }
+      @stories.each { |s| ProcessedStory.new(@api_response.id, s) }
     end
   end
 
@@ -16,7 +18,8 @@ module Storify
     attr_reader :api_story
     attr_reader :story
 
-    def initialize(api_story)
+    def initialize(api_response_id, api_story)
+      @api_response_id = api_response_id
       @api_story = api_story
       @story = Story.new
       @story.state = Story::States::NEW
@@ -39,6 +42,7 @@ module Storify
       @story.keywords = @api_story["keywords"]
       @story.category = @api_story["category"]
       @story.subcategory = @api_story["subcategory"]
+      @story.api_response_id = @api_response_id
       story_photos unless @api_story["photos"].nil?
     end
 

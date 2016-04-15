@@ -1,18 +1,21 @@
 %h1.page-title Stories
 
-%table.stories
-  %thead
-    %tr
-      %th
-        %abbr{title: "Content Management System"} CMS
-        ID
-      %th Headline
-      %th Created
-      %th
-  %tbody
-    - @stories.each do |story|
-      %tr.story
-        %td.story__cms-id= story.cms_id
-        %td.story__headline= story.headline.html_safe
-        %td.story__created-at= story.created_at
-        %td= link_to "Show", story
+%ul
+  - @stories.each do |story|
+    %li.story.card.card--story
+      %header.card__header
+        %h1.card__title.story__headline= link_to story.headline.html_safe, story
+        .cover
+      %ul.card__info
+        %li.card__info-segment
+          %h2.card__info-segment-key CMS ID
+          .card__info-segment-val.story__cms-id= story.cms_id
+        %li.card__info-segment
+          %h2.card__info-segment-key Created At
+          .card__info-segment-val.story__created-at= story.created_at
+        %li.card__info-segment
+          %h2.card__info-segment-key API Response
+          .card__info-segment-val.story__api-response
+            = link_to "View API Response", story.api_response
+
+= will_paginate @stories

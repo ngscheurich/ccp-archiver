@@ -1,5 +1,7 @@
 # coding: utf-8
 class ApiResponse < ActiveRecord::Base
+  has_many :stories
+
   def self.last_cms_id
     last_api_response = ApiResponse.last || NoApiResponse.new
     last_api_response.cms_ids.last

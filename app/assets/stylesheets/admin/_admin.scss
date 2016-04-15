@@ -50,11 +50,11 @@ Main Page Content
 .cd-main-content {
 
   .content-wrapper {
+    @include outer-container;
     padding: $header-height-S 5% 3em;
 
     h1 {
-      text-align: center;
-      padding: 3em 0;
+      padding: 1em 0 0.5em;
       font-size: 2rem;
     }
   }
@@ -72,7 +72,6 @@ Main Page Content
       padding-top: $header-height-M;
 
       h1 {
-	padding: 4em 0;
 	font-size: 3.2rem;
 	font-weight: 300;
       }
@@ -495,7 +494,7 @@ Sidebar
   }
 
   @include MQ(M) {
-    position: relative;
+    position: fixed;
     float: left;
     top: auto;
     width: $sidebar-width-M;
