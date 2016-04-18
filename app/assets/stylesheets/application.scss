@@ -6,8 +6,52 @@
 @import "neat";
 @import "base/base";
 @import "refills/flashes";
+@import "chartist/chartist";
 @import "admin/variables";
 @import "admin/mixins";
 @import "admin/layout";
 @import "admin/admin";
 @import "cards";
+
+.content-wrapper .content {
+    padding-top: 3em;
+}
+
+.stories-show .content {
+    article {
+	@include span-columns(12);
+	@include media($large-screen) {
+	    @include span-columns(8);
+	}
+	background: white;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	box-shadow:0 2px 0 rgba(0,0,0,0.1);
+	font-family: "Merriweather", serif;
+	padding: 2em;
+
+	.p-name {
+	    font-family: "Open Sans", sans-serif;
+	    font-size: 1.8em;
+	    font-weight: 700;
+	    padding-top: 0;
+	}
+
+	.p-author {
+	    font-style: italic;
+	}
+    }
+
+    aside {
+	@include span-columns(12);
+	@include media($large-screen) {
+	    @include span-columns(4);
+	}
+	
+	dd {
+	    color: rgba(0, 0, 0, 0.7);
+	    font-family: monospace;
+	    font-size: 1.3em;
+	}
+    }
+}

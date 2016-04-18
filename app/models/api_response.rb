@@ -1,5 +1,6 @@
 # coding: utf-8
 class ApiResponse < ActiveRecord::Base
+  default_scope { order(created_at: "DESC") }
   has_many :stories
 
   def self.last_cms_id

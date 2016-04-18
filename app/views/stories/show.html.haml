@@ -1,8 +1,21 @@
-%dl.story
-  %dt Created
-  %dd.story__created-at= @story.created_at
-  %dt CMS ID
-  %dd.story__cms-id= @story.cms_id
-
-%h1.story__headline= @story.headline.html_safe
-= @story.body.html_safe  
+.h-entry
+  %article
+    %h1.p-name= @story.headline.html_safe
+    .p-author= @story.byline.html_safe
+    %hr
+    .e-content
+      = @story.body.html_safe
+  %aside
+    %dl.story
+      %dt CMS ID
+      %dd.story__cms-id= @story.cms_id
+      %dt Publish Date
+      %dd= @story.publish_date || "-"
+      %dt Category/Subcategory
+      %dd= "#{@story.category}/#{@story.subcategory}" || "-"
+      %dt Time Updated
+      %dd= @story.time_updated || "-"
+      %dt Location
+      %dd= @story.location || "-"
+      %dt Keywords
+      %dd= @story.keywords
