@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :stories, only: [:index, :show]
 
   resources :api_responses, only: [:index, :show]
+
+  get "/download", to: "downloads#start"
 end

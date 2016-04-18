@@ -229,6 +229,7 @@ GEM
       rspec-core (>= 2, < 4, != 2.12.0)
     ruby_parser (3.8.1)
       sexp_processor (~> 4.1)
+    rubyzip (1.2.0)
     safe_yaml (1.0.4)
     sass (3.4.22)
     sass-rails (5.0.4)
@@ -326,6 +327,7 @@ DEPENDENCIES
   rollbar (~> 2.8.3)
   rspec-rails (~> 3.4.0)
   rspec_junit_formatter (= 0.2.2)
+  rubyzip (>= 1.0.0)
   sass-rails (~> 5.0)
   shoulda-matchers
   simple_form

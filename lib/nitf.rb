@@ -20,7 +20,7 @@ module Nitf
     def nitf_head(xml)
       xml.head do
         xml.docdata { nitf_identified_content(xml) }
-        xml.send(:"doc-id", "id-string" => "cms-story-#{@story.cms_id}")
+        xml.send(:"doc-id", "id-string" => "article-#{@story.cms_id}")
         xml.pubdata(type: "web", "position.section" => @story.section)
         xml.release(norm: @story.publish_date) if content?(@story.publish_date)
       end
