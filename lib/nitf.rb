@@ -97,7 +97,7 @@ module Nitf
       if content?(@story.infobox)
         xml.block(xmlns: "http://www.w3.org/1999/xhtml", class: "breakout") do
           xml.classifier(type: "tncms:related-content-type", value: "infobox")
-          cdata(@story.infobox)
+          xml.cdata(@story.infobox)
         end
       end
     end
