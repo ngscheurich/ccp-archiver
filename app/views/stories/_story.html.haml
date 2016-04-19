@@ -10,6 +10,8 @@
       %h2.card__info-segment-key Published At
       .card__info-segment-val.story__created-at= story.published_at
     %li.card__info-segment
-      %h2.card__info-segment-key API Response
-      .card__info-segment-val.story__api-response
-        = link_to "View API Response", story.api_response
+      %h2.card__info-segment-key Category 
+      .card__info-segment-val= story.category
+    %li.card__info-segment
+      %h2.card__info-segment-key Subcategory 
+      .card__info-segment-val= story.subcategory
