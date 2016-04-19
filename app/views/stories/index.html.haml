@@ -2,20 +2,9 @@
 
 %ul
   - @stories.each do |story|
-    %li.story.card.card--story
-      %header.card__header
-        %h1.card__title.story__headline= link_to story.headline.html_safe, story
-        .cover
-      %ul.card__info
-        %li.card__info-segment
-          %h2.card__info-segment-key CMS ID
-          .card__info-segment-val.story__cms-id= story.cms_id
-        %li.card__info-segment
-          %h2.card__info-segment-key Created At
-          .card__info-segment-val.story__created-at= story.created_at
-        %li.card__info-segment
-          %h2.card__info-segment-key API Response
-          .card__info-segment-val.story__api-response
-            = link_to "View API Response", story.api_response
+    = render partial: "story", locals: { story: story }
 
-= will_paginate @stories
+%hr/
+    
+.pagination-wrapper
+  = will_paginate @stories

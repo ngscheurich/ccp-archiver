@@ -1,0 +1,13 @@
+.panel {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-shadow:0 2px 0 rgba(0,0,0,0.1);
+    margin-bottom: 2em;
+    padding: 2em;
+
+    &__title {
+	font-size: 1em !important;
+	text-align: center;
+    }
+}

@@ -1,0 +1,5 @@
+%h1.page-title Results
+
+%ul
+  - @stories.each do |story|
+    = render partial: "stories/story", locals: { story: story }

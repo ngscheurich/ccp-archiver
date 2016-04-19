@@ -6,16 +6,21 @@
     .e-content
       = @story.body.html_safe
   %aside
+    = link_to "View NITF", story_path(@story.id, format: :xml), class: "action-btn"
     %dl.story
       %dt CMS ID
       %dd.story__cms-id= @story.cms_id
       %dt Publish Date
-      %dd= @story.publish_date || "-"
+      %dd= @story.published_at
       %dt Category/Subcategory
-      %dd= "#{@story.category}/#{@story.subcategory}" || "-"
-      %dt Time Updated
-      %dd= @story.time_updated || "-"
-      %dt Location
-      %dd= @story.location || "-"
+      %dd= "#{@story.category}/#{@story.subcategory}" || "–"
       %dt Keywords
-      %dd= @story.keywords
+      %dd= @story.keywords || "–"
+
+%hr
+
+.photos
+  %ul
+    - @story.photos.each do |photo|
+      %li.photo= link_to image_tag(photo.source), photo
+      

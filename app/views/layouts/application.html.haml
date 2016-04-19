@@ -6,20 +6,23 @@
     %meta{:content => "NOODP", :name => "ROBOTS"}/
     %meta{:content => "initial-scale=1", :name => "viewport"}/
     %title= title
-    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Merriweather:400,400italic,700,700italic"
+    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Merriweather:400,400italic,700,700italic|Source+Code+Pro"
     = stylesheet_link_tag :application, media: "all"
     = javascript_include_tag :chartist
     = javascript_include_tag :modernizr
     = csrf_meta_tags
   %body{:class => body_class}
     %header.cd-main-header
+      .cd-search.is-hidden
+        %form{action: "/search", method: "get"}
+          %input{placeholder: "Search by CMS ID", type: "search", name: "cms_id"}/
       %a.cd-nav-trigger{href: "#0"}
         Menu
         %span
       %nav.cd-nav
         %ul.cd-top-nav
           %li
-            %a{href: "#0"} Support
+            %a{href: "mailto:nscheurich@theadvocate.com?subject=CCP%20Archiver"} Support
     %main.cd-main-content
       = render "side_nav"
       .content-wrapper

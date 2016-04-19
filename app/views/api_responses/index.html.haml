@@ -3,20 +3,19 @@
 %table.api-responses
   %thead
     %tr
-      %th Initiated at
-      %th Elapsed Time (ms)
-      %th Server Status
-      %th Server Response Time (ms)
-      %th Stories Retrieved
+      %th Status
+      %th Initiated
+      %th Elapsed
+      %th Retrieved
       %th CMS ID(s)
       %th
   %tbody
     - @api_responses.each do |api_response|
       %tr.api-response
-        %td.api-response__initiated-at= api_response.initiated_at
-        %td.api-response__elapsed-time= api_response.elapsed_time
-        %td.api-response__status= api_response.status
-        %td.api-response__server-response-time= api_response.server_response_time
+        %td.api-response__status
+          %span{class: "http-status http-status--#{api_response.status.gsub(/ /, '_')}"}= api_response.status
+        %td.api-response__initiated-at= api_response.initiated_at_formatted
+        %td.api-response__elapsed-time= api_response.elapsed_seconds
         %td.api-response__stories-retrieved= api_response.stories_retrieved
         %td.api-response__cms-ids= api_response.cms_id_range
-        %td= link_to "Show", api_response
+        %td= link_to "View", api_response_path(api_response.id, format: :json)

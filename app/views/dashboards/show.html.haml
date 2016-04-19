@@ -1,3 +1,16 @@
-%h1.page-title Dashboard
+.charts
+  #stories-imported.panel
+    %h1.panel__title Imports over time
+    .panel__content
+      = stories_chart
 
-= stories_chart
+  #stories-total.panel
+    %h1.panel__title Stories imported vs. remaining
+    .panel__content
+      = stories_pie
+
+#recent-imports
+  %h1 Recent imports
+  %ul
+    - @stories.each do |story|
+      = render partial: "stories/story", locals: { story: story }

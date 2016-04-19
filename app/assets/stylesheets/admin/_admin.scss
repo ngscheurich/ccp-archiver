@@ -18,10 +18,14 @@ body, form * {
     background: #f4f2e1;
   font: {
   size: 1.6rem;
-  family: $primary-font; // variables inside partials > _variables.scss
+  family: $primary-font !important; // variables inside partials > _variables.scss
 }
   color: $color-1;
   @include clearfix;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $primary-font !important; // variables inside partials > _variables.scss
 }
 
 a {
@@ -38,7 +42,7 @@ input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
-  display: none;
+  display: none !important;
 }
 
 /* -------------------------------- 
@@ -54,7 +58,7 @@ Main Page Content
     padding: $header-height-S 5% 3em;
 
     h1 {
-      padding: 1em 0 0.5em;
+      padding: 0;
       font-size: 2rem;
     }
   }
@@ -281,6 +285,9 @@ Header
       }
     }
   }
+
+  margin-left: 0 !important;
+  input { border-left: none !important; }
 }
 
 /* -------------------------------- 
@@ -431,31 +438,15 @@ Sidebar
       @include center(y);
       height: 16px;
       width: 16px;
-      background: image-url("cd-nav-icons.svg") no-repeat 0 0;
+      background: image-url("nav-icons.svg") no-repeat 0 0;
     }
   }
 
-  > ul > li.overview > a::before {
-    background-position: -64px 0;
-  }
-
-  > ul > li.notifications > a::before {
-    background-position: -80px 0;
-  }
-
-  > ul > li.comments > a::before {
-    background-position: -48px 0;
-  }
-
-  > ul > li.bookmarks > a::before {
+  > ul > li.dashboard > a::before {
     background-position: -32px 0;
   }
 
-  > ul > li.images > a::before {
-    background-position: 0 0;
-  }
-
-  > ul > li.users > a::before {
+  > ul > li.stories > a::before {
     background-position: -16px 0;
   }
 
@@ -735,4 +726,108 @@ Sidebar
       visibility: visible;
     }
   }
+}
+
+.content-wrapper .content {
+    padding-top: 3em;
+}
+
+.dashboards-show {
+    #stories-imported {
+	@include media($medium-screen) { @include span-columns(6); }
+    }
+
+    #stories-total {
+	@include media($medium-screen) { @include span-columns(6); }
+    }
+}
+
+.stories-show .content {
+    .action-btn {
+	display: block;
+	padding: 1em 0;
+	background-color: $color-2;
+	border-radius: .25em;
+	border: none;
+	box-shadow: 0 1px 3px rgba(#000, .3), inset 0 1px 0 rgba(#fff, .2);
+	font-size: 0.8em;
+	text-align: center;
+	color: $color-3;
+	font-weight:bold;
+	width: 70%;
+    }
+    
+    article {
+	@include span-columns(12);
+	@include media($large-screen) {
+	    @include span-columns(8);
+	}
+	background: white;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	box-shadow:0 2px 0 rgba(0,0,0,0.1);
+	font-family: "Merriweather", serif;
+	padding: 2em;
+
+	.p-name {
+	    font-family: "Open Sans", sans-serif;
+	    font-size: 1.8em;
+	    font-weight: 700;
+	    padding-top: 0;
+	}
+
+	.p-author {
+	    font-style: italic;
+	    font-size: 0.9em;
+	}
+    }
+
+    aside {
+	@include span-columns(12);
+	@include media($large-screen) {
+	    @include span-columns(4);
+	}
+
+	font-size: 0.95em;
+	
+	dd {
+	    color: rgba(0, 0, 0, 0.7);
+	}
+    }
+}
+
+.pagination-wrapper {
+    position: relative;
+
+    .pagination {
+	@include transform(translateX(-50%));
+	position: absolute;
+	top: 0;
+	left: 50%;
+    }
+
+    .previous_page,
+    .next_page {
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 2px;
+	margin: 0 0.5em;
+	padding: 0.5em;
+    }
+}
+
+.http-status {
+    background: red;
+    color: white;
+    border-radius: 2px;
+    padding: 0.1em 0.3em;
+
+    &.http-status--200_OK {
+	background: green;
+    }
+}
+
+.api_responses-index {
+    tbody {
+	font-family: "Source Code Pro", monospace;
+    }
 }

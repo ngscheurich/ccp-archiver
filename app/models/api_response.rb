@@ -24,13 +24,22 @@ class ApiResponse < ActiveRecord::Base
   end
 
   def cms_id_range
-    head = extract("cms_id_start")
-    last = extract("cms_id_end")
+    head = cms_ids.first
+    last = cms_ids.last
     head == last ? head : "#{head}–#{last}"
   end
 
   def extract(key, default = "")
     hash = JSON.parse(body)
     hash.key?(key) ? hash[key] : default
+  end
+
+  def initiated_at_formatted
+    date = initiated_at.in_time_zone("Central Time (US & Canada)")
+    date.strftime("%Y-%m-%d %H:%M:%S")
+  end
+
+  def elapsed_seconds
+    "#{(elapsed_time / 1000).round(2)} s"
   end
 end

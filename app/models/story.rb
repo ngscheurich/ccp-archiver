@@ -25,4 +25,20 @@ class Story < ActiveRecord::Base
     nitf = Nitf::Story.new(self)
     puts nitf.builder.to_xml
   end
+
+  def published_at
+    date = publish_date || NoPublishDate.new
+    zoned = date.in_time_zone("Central Time (US & Canada)")
+    zoned.strftime("%Y-%m-%d %l:%M %p")
+  end
+
+  class NoPublishDate
+    def in_time_zone(zone)
+      self
+    end
+
+    def strftime(str)
+      "-"
+    end
+  end
 end
