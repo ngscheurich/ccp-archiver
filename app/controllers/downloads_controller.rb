@@ -1,6 +1,7 @@
 require "zip"
 
 class DownloadsController < ApplicationController
+  before_action :require_login
   before_action :set_stories, only: :start
 
   def start

@@ -1,4 +1,6 @@
 class ApiResponsesController < ApplicationController
+  before_action :require_login
+
   def index
     @api_responses = ApiResponse.all
   end

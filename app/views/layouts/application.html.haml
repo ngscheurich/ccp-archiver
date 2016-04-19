@@ -4,14 +4,14 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
     %meta{:content => "NOODP", :name => "ROBOTS"}/
-    %meta{:content => "initial-scale=1", :name => "viewport"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     %title= title
     = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Merriweather:400,400italic,700,700italic|Source+Code+Pro"
     = stylesheet_link_tag :application, media: "all"
     = javascript_include_tag :chartist
     = javascript_include_tag :modernizr
     = csrf_meta_tags
-  %body{:class => body_class}
+  %body{class: body_class}
     %header.cd-main-header
       .cd-search.is-hidden
         %form{action: "/search", method: "get"}
@@ -22,7 +22,10 @@
       %nav.cd-nav
         %ul.cd-top-nav
           %li
+            %a{href: "https://github.com/ngscheurich/ccp-archiver"} Code
+          %li
             %a{href: "mailto:nscheurich@theadvocate.com?subject=CCP%20Archiver"} Support
+          = render "session"
     %main.cd-main-content
       = render "side_nav"
       .content-wrapper

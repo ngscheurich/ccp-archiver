@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  before_action :require_login
   before_action :set_photo, only: :show
 
   def index

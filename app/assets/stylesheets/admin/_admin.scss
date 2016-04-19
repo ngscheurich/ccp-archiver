@@ -14,14 +14,22 @@ html {
   font-size: 62.5%;
 }
 
-body, form * {
+body {
     background: #f4f2e1;
+}
+
+body, form * {
   font: {
   size: 1.6rem;
   family: $primary-font !important; // variables inside partials > _variables.scss
 }
   color: $color-1;
   @include clearfix;
+}
+
+form button,
+form input[type="submit"] {
+    background: $color-2 !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -830,4 +838,8 @@ Sidebar
     tbody {
 	font-family: "Source Code Pro", monospace;
     }
+}
+
+.cd-nav-trigger {
+    text-indent: -9999em !important;
 }
