@@ -7,3 +7,12 @@ namespace :dti do
     Storify::Stories.new(api_request.api_response)
   end
 end
+
+namespace :nitf do
+  desc "Create new NITF archive string"
+  task archive: :environment do
+    buffer = Archive.buffer
+    archive = Archive.last || NoArchive.new
+    archive.payload = buffer
+  end
+end
