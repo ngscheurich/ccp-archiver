@@ -1,11 +1,11 @@
 .charts
   #stories-imported.panel
-    %h1.panel__title Imports over time
+    %h1.panel__title Stoies Imported
     .panel__content
-      = stories_chart
+      .big-number= number_with_delimiter(Story.count)
 
   #stories-total.panel
-    %h1.panel__title Stories imported vs. remaining
+    %h1.panel__title Stories Remaining
     .panel__content
       = stories_pie
 

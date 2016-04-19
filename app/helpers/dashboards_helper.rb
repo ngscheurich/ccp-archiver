@@ -39,9 +39,7 @@ HTML
     html = <<HTML
       <div id='stories-pie' class='ct-chart ct-golden-section'></div>
       <script>
-        new Chartist.Pie('#stories-pie', #{data}, {
-          labelInterpolationFnc: function(value) { return value[0] }
-        });
+        new Chartist.Pie('#stories-pie', #{data});
       </script>
 HTML
     html.html_safe
