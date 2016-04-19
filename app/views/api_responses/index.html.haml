@@ -19,3 +19,8 @@
         %td.api-response__stories-retrieved= api_response.stories_retrieved
         %td.api-response__cms-ids= api_response.cms_id_range
         %td= link_to "View", api_response_path(api_response.id, format: :json)
+
+%hr/
+    
+.pagination-wrapper
+  = will_paginate @stories
