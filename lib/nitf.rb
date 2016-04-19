@@ -22,7 +22,7 @@ module Nitf
         xml.docdata { nitf_identified_content(xml) }
         xml.send(:"doc-id", "id-string" => "article-#{@story.cms_id}")
         xml.pubdata(type: "web", "position.section" => @story.section)
-        xml.release(norm: @story.publish_date) if content?(@story.publish_date)
+        xml.send(:"date.release", norm: @story.nitf_publish_date) if content?(@story.publish_date)
       end
     end
 
