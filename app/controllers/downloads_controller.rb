@@ -1,4 +1,5 @@
 class DownloadsController < ApplicationController
+  before_action :render_nothing
   before_action :require_login
 
   def start
