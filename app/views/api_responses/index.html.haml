@@ -4,9 +4,10 @@
   %thead
     %tr
       %th Status
+      %th Start ID
+      %th Num Stories
       %th Initiated
       %th Elapsed
-      %th Retrieved
       %th CMS ID(s)
       %th
   %tbody
@@ -14,9 +15,10 @@
       %tr.api-response
         %td.api-response__status
           %span{class: "http-status http-status--#{api_response.status.gsub(/ /, '_')}"}= api_response.status
+        %td= api_response.start_id
+        %td= api_response.num_stories
         %td.api-response__initiated-at= api_response.initiated_at_formatted
         %td.api-response__elapsed-time= api_response.elapsed_seconds
-        %td.api-response__stories-retrieved= api_response.stories_retrieved
         %td.api-response__cms-ids= api_response.cms_id_range
         %td= link_to "View", api_response_path(api_response.id, format: :json)
 

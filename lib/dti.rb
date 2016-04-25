@@ -1,5 +1,6 @@
 class Dti
   include HTTParty
+  attr_reader :options
   base_uri "theadvocate.com"
 
   def initialize(start_id = 1, num_stories = 1)

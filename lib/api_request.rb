@@ -1,10 +1,11 @@
 require "benchmark"
 
 class ApiRequest
+  attr_reader :dti
   attr_reader :api_response
 
   def initialize(start_id = 1, num_stories = 1)
-    dti = Dti.new(start_id, num_stories)
+    @dti = Dti.new(start_id, num_stories)
 
     @time_start = Time.now
     @response = dti.stories
@@ -20,6 +21,8 @@ class ApiRequest
     @api_response = ApiResponse.new(
       initiated_at: @time_start,
       elapsed_time: (@time_finish - @time_start) * 1000,
+      start_id: @dti.options[:query][:start_id],
+      num_stories: @dti.options[:query][:num_stories],
       code: @response.code,
       message: @response.message,
       headers: @response.headers.to_json,

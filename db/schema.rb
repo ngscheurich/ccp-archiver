@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425192150) do
+ActiveRecord::Schema.define(version: 20160425200243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20160425192150) do
     t.text     "headers"
     t.integer  "code"
     t.string   "message"
+    t.integer  "start_id"
+    t.integer  "num_stories"
   end
 
   create_table "archives", force: :cascade do |t|
