@@ -13,3 +13,4 @@
 /tmp/*
 /config/initializers/rollbar.rb
 .\#*
+*.dump
