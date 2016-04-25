@@ -1,5 +1,6 @@
 class Story < ActiveRecord::Base
   default_scope { order(created_at: "DESC") }
+  validates :cms_id, presence: true, uniqueness: true
   has_and_belongs_to_many :photos
   belongs_to :api_response
 
