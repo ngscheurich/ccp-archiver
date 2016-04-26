@@ -22,7 +22,9 @@ module Nitf
         xml.docdata { nitf_identified_content(xml) }
         xml.send(:"doc-id", "id-string" => "article-#{@story.cms_id}")
         xml.pubdata(type: "web", "position.section" => @story.section)
-        xml.send(:"date.release", norm: @story.nitf_publish_date) if content?(@story.publish_date)
+        if content?(@story.publish_date)
+          xml.send(:"date.release", norm: @story.nitf_publish_date)
+        end
       end
     end
 
@@ -67,13 +69,22 @@ module Nitf
       if content?(@story.headline) || content?(@story.subhead)
         xml.hedline do
           xml.hl1(@story.headline) if content?(@story.headline)
-          xml.hl2(class: "subheadline") { @story.subhead } if content?(@story.subhead)
+          if content?(@story.subhead)
+            xml.hl2(class: "subheadline") { xml.<< @story.subhead }
+          end
         end
       end
     end
 
     def nitf_byline(xml)
-      xml.byline { xml.cdata(@story.byline) } if content?(@story.byline)
+      if content?(@story.byline)
+        byline = @story.byline
+        byline.gsub!(%r{<p> *</p>}, "")
+        byline.gsub!(/[\n&#010;]/, "")
+        byline.gsub!(/<p> /, "<p>")
+        byline.gsub!(%r{ </p>}, "</p>")
+        xml.byline { xml.<< byline }
+      end
     end
 
     def nitf_body_content(xml)
@@ -89,7 +100,9 @@ module Nitf
 
     def nitf_body_text(xml)
       if content?(@story.body)
-        xml.block(xmlns: "http://www.w3.org/1999/xhtml") { xml.cdata(@story.body) }
+        xml.block(xmlns: "http://www.w3.org/1999/xhtml") do
+          xml.<< @story.body
+        end
       end
     end
 
@@ -97,13 +110,13 @@ module Nitf
       if content?(@story.infobox)
         xml.block(xmlns: "http://www.w3.org/1999/xhtml", class: "breakout") do
           xml.classifier(type: "tncms:related-content-type", value: "infobox")
-          xml.cdata(@story.infobox)
+          @story.infobox
         end
       end
     end
 
     def content?(str)
-      !str.nil? && str != ""
+      true unless str.nil? || str == ""
     end
   end
 end
