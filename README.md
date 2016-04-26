@@ -3,7 +3,7 @@
 [![Build Status](https://circleci.com/gh/ngscheurich/ccp-archiver.svg?&style=shield)](https://circleci.com/gh/ngscheurich/ccp-archiver)
 [![Code Coverage](https://codecov.io/github/ngscheurich/ccp-archiver/coverage.svg?branch=master)](https://codecov.io/github/ngscheurich/ccp-archiver?branch=master)
 
-The CCP Archiver is a tool I built to extract all of the content from The Advocate’s old CMS, store it in a safe place, and transform it to meet the import requirements of The Advocate’s new CMS.
+The CCP Archiver is a tool I built to extract all of the content from [The Advocate](http://theadvocate.com)’s CMS, store it in a safe place, and transform it to meet the import requirements of a new CMS.
 
 ## Getting Started
 
