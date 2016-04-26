@@ -3,11 +3,6 @@ class ApiResponse < ActiveRecord::Base
   default_scope { order(created_at: "DESC") }
   has_many :stories
 
-  def self.last_cms_id
-    last_api_response = ApiResponse.last || NoApiResponse.new
-    last_api_response.cms_ids.last
-  end
-
   def status
     "#{code} #{message}"
   end
