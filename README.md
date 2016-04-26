@@ -7,6 +7,8 @@ The CCP Archiver is a tool I built to extract all of the content from [The Advoc
 
 ![Screenshot](https://raw.githubusercontent.com/ngscheurich/ccp-archiver/master/screenshot.png)
 
+Cheers to CodyHouse for the excellent [responsive navigation](https://codyhouse.co/gem/responsive-sidebar-navigation/).
+
 ## Getting Started
 
 After you have cloned this repo, run this setup script to set up your machine
