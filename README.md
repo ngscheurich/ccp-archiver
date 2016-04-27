@@ -5,6 +5,10 @@
 
 The CCP Archiver is a tool I built to extract all of the content from [The Advocate](http://theadvocate.com)’s CMS, store it in a safe place, and transform it to meet the import requirements of a new CMS.
 
+![Screenshot](https://raw.githubusercontent.com/ngscheurich/ccp-archiver/master/screenshot.png)
+
+Cheers to CodyHouse for the excellent [responsive navigation](https://codyhouse.co/gem/responsive-sidebar-navigation/).
+
 ## Getting Started
 
 After you have cloned this repo, run this setup script to set up your machine
