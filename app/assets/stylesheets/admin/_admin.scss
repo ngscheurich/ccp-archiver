@@ -751,6 +751,10 @@ Sidebar
 }
 
 .stories-show .content {
+    .h-entry {
+	overflow: hidden;
+    }
+    
     .action-btn {
 	display: block;
 	padding: 1em 0;
@@ -800,6 +804,26 @@ Sidebar
 	
 	dd {
 	    color: rgba(0, 0, 0, 0.7);
+	}
+    }
+
+    .photos {
+	.photo {
+	    @include span-columns(6);
+	    @include omega(2n);
+	    border: 5px solid white;
+	    height: 100px;
+	    margin-bottom: 1em;
+	    overflow: hidden;
+
+	    @include media($medium-screen) {
+		border: 10px solid white;
+		height: 180px;
+	    }
+
+	    @include media($large-screen) {
+		height: 260px;
+	    }
 	}
     }
 }

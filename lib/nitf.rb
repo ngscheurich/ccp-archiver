@@ -92,6 +92,7 @@ module Nitf
         nitf_related_links(xml)
         nitf_body_text(xml)
         nitf_infobox(xml)
+        nitf_photos(xml)
       end
     end
 
@@ -111,6 +112,16 @@ module Nitf
         xml.block(xmlns: "http://www.w3.org/1999/xhtml", class: "breakout") do
           xml.classifier(type: "tncms:related-content-type", value: "infobox")
           @story.infobox
+        end
+      end
+    end
+
+    def nitf_photos(xml)
+      @story.photos.each do |photo|
+        xml.media(:"media-type" => "image") do
+          xml.send(:"media-metadata", name: "id", value: photo.photo_id)
+          xml.send(:"media-reference", source: photo.source)
+          xml.send(:"media-caption") { xml.<< "<p>#{photo.caption}</p>" }
         end
       end
     end
