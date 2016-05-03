@@ -1,3 +1,4 @@
+# coding: utf-8
 module Nitf
   class Story
     attr_reader :story
@@ -6,10 +7,15 @@ module Nitf
     def initialize(story)
       @story = story
       @xml = builder.to_xml
+    rescue StandardError => error
+      puts <<ERROR
+Problem processing Story #{@story.id} <http://localhost:3000/stories/#{@story.id}>
+  ↳ #{error.message}
+ERROR
     end
 
     def builder
-      Nokogiri::XML::Builder.new do |xml|
+      Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
         xml.nitf do
           nitf_head(xml)
           nitf_body(xml)
