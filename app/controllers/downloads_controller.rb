@@ -1,32 +1,9 @@
 class DownloadsController < ApplicationController
-  # before_action :render_nothing
-  before_action :require_login
-
-  def start
-    # archive = Archive.last
-    # send_zip_file(archive.payload)
-
-    zip_file = "#{ENV['HOME']}/ccp-archive-#{Time.now.strftime('%s')}.zip"
-    Zip::OutputStream.open(zip_file) do |zos|
-      Story.all.each do |story|
-        zos.put_next_entry "article-#{story.cms_id}.xml"
-        zos.puts Nitf::Story.new(story).xml
-      end
-    end
-  end
+  before_action :render_nothing
 
   private
 
   def render_nothing
     render nothing: true
-  end
-
-  def send_zip_file(data)
-    send_data(
-      data,
-      type: "application/zip",
-      disposition: "attachment",
-      filename: "advocate-nitf-#{Time.now.to_i}.zip"
-    )
   end
 end

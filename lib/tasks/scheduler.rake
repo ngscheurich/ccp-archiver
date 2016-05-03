@@ -1,3 +1,5 @@
+require "zip"
+
 namespace :dti do
   desc "Get new story data from DTI web API"
   task stories: :environment do
@@ -9,11 +11,25 @@ namespace :dti do
   end
 end
 
-namespace :nitf do
-  desc "Create new NITF archive string"
-  task archive: :environment do
-    buffer = Archive.buffer
-    archive = Archive.last || NoArchive.new
-    archive.payload = buffer
+namespace :archive do
+  desc "Download stories as NITF XML"
+  task :download do
+    zip_file = "#{ENV['TO']}/ccp-archive-#{Time.now.strftime('%s')}.zip"
+    story_count = Story.count
+
+    FileUtils.touch(zip_file)
+
+    start_time = Time.now
+    Zip::OutputStream.open(zip_file) do |zos|
+      Story.limit(500).each_with_index do |story, i|
+        print "Processing #{zip_file} (#{i + 1}/#{story_count})...\r"
+        zos.put_next_entry "article-#{story.cms_id}.xml"
+        zos.puts Nitf::Story.new(story).xml
+      end
+    end
+    end_time = Time.now
+
+    puts "\nCompleted in #{((end_time - start_time) / 60).round} minutes."
+    puts "Have a great day."
   end
 end
