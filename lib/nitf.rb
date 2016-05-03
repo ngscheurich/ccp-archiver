@@ -127,7 +127,9 @@ ERROR
         xml.media(:"media-type" => "image") do
           xml.send(:"media-metadata", name: "id", value: photo.photo_id)
           xml.send(:"media-reference", source: photo.source)
-          xml.send(:"media-caption") { xml.<< "<p>#{photo.caption}</p>" }
+          xml.send(:"media-caption") do
+            xml.<< "<p>#{photo.caption.gsub(/&#151;/, '&mdash;')}</p>"
+          end
         end
       end
     end
