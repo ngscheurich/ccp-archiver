@@ -255,7 +255,7 @@ module SeedCategorySectionMappings
       ["Sports", "Mixed Martial Arts", "new_orleans/sports"],
       ["Sports", "General", "new_orleans/sports"],
       ["Sports", "LSU Football", "baton_rouge/sports/lsu"],
-      ["Sports", "SU Football", "baton_rouge/sport"],
+      ["Sports", "SU Football", "baton_rouge/sports"],
       ["Sports", "Preps Football", "new_orleans/sports/high_schools"],
       ["Sports", "State Schools Football", "new_orleans/sports"],
       ["Sports", "Recruiting Football", "new_orleans/sports"],
