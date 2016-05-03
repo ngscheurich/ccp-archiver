@@ -11,7 +11,7 @@ class ApiResponse < ActiveRecord::Base
   end
 
   def cms_ids
-    extract("cms_ids", [1])
+    extract("cms_ids", [0])
   end
 
   def stories_retrieved
@@ -27,6 +27,8 @@ class ApiResponse < ActiveRecord::Base
   def extract(key, default = "")
     hash = JSON.parse(body)
     hash.key?(key) ? hash[key] : default
+  rescue
+    default
   end
 
   def initiated_at_formatted
