@@ -21,7 +21,7 @@ namespace :archive do
 
     start_time = Time.now
     Zip::OutputStream.open(zip_file) do |zos|
-      Story.limit(500).each_with_index do |story, i|
+      Story.all.each_with_index do |story, i|
         print "Processing #{zip_file} (#{i + 1}/#{story_count})...\r"
         zos.put_next_entry "article-#{story.cms_id}.xml"
         zos.puts Nitf::Story.new(story).xml
