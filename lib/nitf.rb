@@ -108,7 +108,7 @@ ERROR
     def nitf_body_text(xml)
       if content?(@story.body)
         xml.block(xmlns: "http://www.w3.org/1999/xhtml") do
-          xml.<< @story.body
+          xml.<< @story.body.gsub(%r{<script type=\"text\/javascript\">.*<\/script>}, "")
         end
       end
     end
