@@ -43,3 +43,6 @@ you can deploy to staging and production with:
 
     $ ./bin/deploy staging
     $ ./bin/deploy production
+
+---
+Copyright (c) 2016 The Advocate under the [MIT License (MIT)](https://opensource.org/licenses/MIT)
